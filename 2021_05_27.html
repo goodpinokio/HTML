@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Element Control</title>
+    <style>
+        #wrap{
+            border: 1px solid lime;
+            width: 300px; height: 300px;
+            background-size: 300px 300px;
+            background-image: url(images/Lighthouse.jpg);
+        }
+
+        li{
+            display: inline;
+        }
+
+        img{
+            border: 3px dotted green;
+        }
+    </style>
+    <script>
+        function change(){ // var change = function(){}
+            var name = document.getElementById("sel").value; // Koala.jpg
+            var section = document.getElementById("wrap");
+            section.style.backgroundImage="url('images/"+name+"')";
+        }
+        
+    </script>
+</head>
+<body>
+   <select id="sel">
+    <option value="Desert.jpg">desert</option>
+    <option value="Jellyfish.jpg">jellyfish</option>
+    <option value="Koala.jpg">koala</option>
+    <option value="Penguins.jpg">penguins</option>
+    <option value="Tulips.jpg">tulips</option>
+   </select>
+   
+   <input type="button" value="이미지 배경 변환" onclick="change()">
+   <div id="wrap">
+
+   </div>
+
+   <script>
+       function change2(){
+           var number = document.getElementById("num").value;
+           var input = "n"+number;
+           var target = document.getElementsByClassName("item"); // target[0] ~ target[4];
+
+           setInterval(function(){
+
+           for(var i=0;i<target.length;i++){ // for(var i in target) {} 와 같다.
+           var r = Math.floor(Math.random()*255);
+           var g = Math.floor(Math.random()*255);
+           var b = Math.floor(Math.random()*255);
+
+           target[i].style.backgroundColor="rgb("+r+","+g+","+b+")";
+           target[i].innerHTML=("changed");
+           }
+        },1000);
+
+       }
+   </script>
+   <input type="text" id="num"> 
+   <input type="button" value="바꿔죠..." onclick="change2()">
+   <ul>
+       <li class="item" id="n1">"test"</li>
+       <li class="item" id="n2">"test"</li>
+       <li class="item" id="n3">"test"</li>
+       <li class="item" id="n4">"test"</li>
+       <li class="item" id="n5">"test"</li>
+   </ul>
+
+
+   <input type="button" id="btn" value="image show" onclick="imgShow()">
+   <div id="imgWrap"></div>
+
+   <script>
+       window.onload= function (){
+        var btn = document.getElementById("btn");
+        // btn.onclick = imgShow;
+        // btn.onclick = function (){
+        //     alert("이미지 띄움");
+        // }
+        btn.addEventListener("click",imgShow);
+        btn.addEventListener("click",function(){
+            alert("이미지 띄움");
+        })
+        btn.addEventListener("click",function(event){
+            event.target.style.color = "red";
+        })
+       }
+
+       
+
+       function imgShow(){
+
+       
+        
+
+           var newimg = document.createElement("img"); // <img> "div" => <div></div>
+           newimg.src="images/Penguins.jpg";
+           newimg.setAttribute("width","300px");
+           newimg.setAttribute("title","귀여운 펭귄");
+           //<img src ="images/penguins.jpg" width ="300px" title="귀여운 펭귄">
+
+           var parents = document.getElementById("imgWrap");
+           parents.appendChild(newimg);
+
+       }
+       
+   </script>
+   <br><br><br><br><br><br><br><br><br>
+   <h3>이미지 로딩</h3>
+   <hr>
+   이미지를 클릭하면 다음 이미지를 보여줍니다. <br>
+   <img src="images/Penguins.jpg" id="img" width="200" height="200" onclick="changeBF(this,event)" style="border: 20px ridge wheat;" alt=".">
+   <script>
+      var files = ["images/penguins.jpg",
+                    "images/lighthouse.jpg",
+                    "images/Desert.jpg",
+                    "images/Koala.jpg"
+          
+      ];
+      var imgs = new Array();
+      for(var i =0;i<files.length;i++){
+          imgs[i]=new Image(); //이미지 객체 생성
+          imgs[i].src = files[i]; //이미지 로딩
+      }
+
+      //다음 이미지 출력
+    //   var next = 1;
+    //   function chage(img){
+    //       img.src = imgs[next].src; //이미지 변경
+    //       next++; // 다음 이미지
+    //       next%=imgs.length; //개수를 넘으면 첨으로
+    //   }
+
+      var current = 0;
+      function changeBF(img,event){
+          if(event.offsetX <=img.width/2)
+          {
+              current--;
+              if(current<0){
+                  current += imgs.length;
+              }
+          }
+          else
+            current++;
+
+            current%=imgs.length;
+
+            img.src = imgs[current].src;
+      }
+   </script>
+</body>
+</html>
