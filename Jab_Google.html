@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        header{
+            height: 70px;
+            width: 100%;
+            
+        }
+        header>div>a{
+            text-decoration: none;
+            color: grey;
+            margin-right: 10px;
+        }
+        section{
+            width: 100%;
+            height: 500px;
+            position: relative;
+            bottom: 5px;
+        }
+        footer{
+            width: 100%;
+            height: 20%;
+        }
+
+
+        .btn{
+            background-color: #4285f4 ;
+            color: white;
+        }
+
+        .input{
+            
+            width:400px;
+            height:20px;
+            font-size:20px;
+            border-radius: 10px;
+
+        }
+
+        .menu:hover{
+            width: 40px;
+            height: 40px;
+            border: 2px solid grey;
+            border-radius: 40px;
+            background-color: grey;
+            color: black;
+        }
+
+        .G{
+            color: #4285f4;
+        }
+        .o{
+            color: #EA4335;
+        }
+        .g1{
+            color: #FBBC05;
+        }
+        .g2{
+            color: #4285f4;
+        }
+        .l{
+            color: #34A853;
+        }
+        .e{
+            color: #EA4335;
+        }
+
+
+        .head{
+            text-align: right;
+        }
+
+        .font_main{
+            text-align: center;
+            font-weight: bolder;
+            font-size: 70px;
+        }
+
+        .search_text{
+            margin-top: 60px;
+            text-align: center;
+            
+        }
+
+        footer{
+            background-color: grey;
+        }
+        .font{
+            text-align: center;
+        }
+        p{
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="head">
+        <a href="">Gmail</a>
+        <a href="">이미지</a>
+        <a class="menu" href="">ㅁ</a>
+        <input class="btn" type="button" value="로그인">
+        </div>
+    </header>
+    <section>
+        <div class="font_main"><span class="G">G</span><span class="o">o</span><span class="g1">g</span><span class="g2">g</span><span class="l">l</span><span class="e">e</span></div>
+        <form action="https://www.google.co.kr/search" method="GET" target="new">
+        <div class="search_text"><input class="input" type="text" name="q"  ></div>
+        </form>
+    </section>
+    <footer>
+        <p>대한민국</p>
+        <hr>
+        <div class="font">확인할 수 없는 위치</div>
+    </footer>
+</body>
+</html>
